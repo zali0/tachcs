@@ -12,10 +12,12 @@ import {
 import React from "react";
 
 import styled from "styled-components";
-import { banner, chicken, COLORS, downWave, upWave } from "../constants";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import Ionicons from "react-native-vector-icons/Ionicons";
+
 import { vw } from "react-native-css-vh-vw";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import AntDesign from "react-native-vector-icons/AntDesign";
+
+import { COLORS } from "../constants";
 import ShowcaseProduct from "../components/ShowcaseProduct";
 
 const Container = styled(SafeAreaView)`
@@ -25,60 +27,25 @@ const Container = styled(SafeAreaView)`
 `;
 
 const TopBar = styled(View)`
+  margin: 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 20px;
-  margin-bottom: 0px;
 `;
-const Location = styled(View)`
-  flex-direction: row;
-`;
-const ArrowLocationIcon = styled(FontAwesome5)`
-  font-size: 25px;
-  color: ${COLORS.primary};
-  margin-right: 5px;
-`;
-const CurrentLocation = styled(Text)`
-  font-size: 9px;
-  margin-right: 5px;
-`;
-
-const DownArrowIcon = styled(Ionicons)`
-  font-size: 16px;
-`;
-const Notification = styled(View)`
-  position: relative;
-`;
-
-const NotificationIcon = styled(Ionicons)`
+const BackArrow = styled(Ionicons)`
   font-size: 30px;
-  color: #000;
+  margin: 10px;
 `;
 
-const NotificationCircle = styled(View)`
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  width: ${vw(6)}px;
-  height: ${vw(6)}px;
-  border-radius: ${vw(100)}px;
-  background-color: ${COLORS.primary};
-  justify-content: center;
-  align-items: center;
-`;
-const NotificationText = styled(Text)`
-  color: #fff;
-  font-size: 10px;
-`;
-
-const WelcomeText = styled(Text)`
-  font-size: 18px;
-  font-weight: 700;
-  margin-left: 20px;
-`;
-const PrimaryText = styled(Text)`
-  color: ${COLORS.primary};
+const Line = styled(View)`
+  width: 70%;
+  height: 5px;
+  background-color: #000;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  align-self: flex-end;
 `;
 
 const SearchArea = styled(Pressable)`
@@ -94,7 +61,7 @@ const SearchArea = styled(Pressable)`
   margin-top: 10px;
 `;
 
-const StyledInput = styled(Text)`
+const StyledInput = styled(TextInput)`
   background-color: #fff;
   border-radius: ${vw(2)}px;
   color: #a0a0a0;
@@ -104,20 +71,25 @@ const SearchIcon = styled(Ionicons)`
   font-size: 20px;
   color: #000;
 `;
-
-const Banners = styled(FlatList)`
-  flex: 1;
-  margin-top: 20px;
-  margin-left: 10px;
+const ScreenTitle = styled(Text)`
+  font-size: 30px;
+  font-weight: 700;
+  color: ${COLORS.primary};
 `;
 
-const Banner = styled(Image)`
-  width: 300px;
-  height: 100px;
-  border-radius: 10px;
-  margin-right: 10px;
+const Loading = styled(View)`
+  margin: 30px;
+  align-items: center;
 `;
 
+const LoadingText = styled(Text)`
+  font-weight: 700;
+`;
+const LoadingIcon = styled(AntDesign)`
+  font-size: 20px;
+  margin: 10px;
+  color: ${COLORS.primary};
+`;
 const Showcase = styled(View)`
   margin-left: 10px;
   margin-top: 20px;
@@ -142,93 +114,11 @@ const More = styled(Text)`
 
 const ShowcaseProducts = styled(FlatList)``;
 
-const StyledScrollView = styled(ScrollView)`
-  /* flex: 1; */
-  height: 100%;
+const PrimaryText = styled(Text)`
+  color: ${COLORS.primary};
 `;
-
-const UpWave = styled(upWave)`
-  height: 10px;
-  width: 10px;
-  margin-bottom: -5px;
-`;
-const CategoriesArea = styled(View)`
-  background-color: ${COLORS.primary};
-  width: 100%;
-`;
-const CategoriesTitle = styled(Text)`
-  color: #fff;
-  font-size: 18px;
-  align-self: center;
-  font-weight: 700;
-`;
-const Categories = styled(View)`
-  background-color: ${COLORS.primary};
-  width: 100%;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
-const Category = styled(View)`
-  background-color: white;
-  width: 30%;
-  border-radius: 10px;
-  justify-content: center;
-  align-items: center;
-  padding: 4px;
-  margin: 5px;
-`;
-const CategoryImage = styled(Image)`
-  width: 60%;
-  height: 40;
-`;
-const CategoryName = styled(Text)`
-  color: #000;
-  font-size: 10px;
-`;
-const DownWave = styled(downWave)`
-  height: 10px;
-  width: 10px;
-  margin-top: -5px;
-`;
-
-const Special = styled(View)`
-  width: 100%;
-  background-color: ${COLORS.secondary};
-  height: 220px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  padding: 10px;
-`;
-const Title = styled(Text)`
-  color: #fff;
-  font-weight: 700;
-  margin-top: 12px;
-  margin-bottom: 7px;
-`;
-const List = styled(FlatList)``;
-const SpecialCategoryBanner = styled(View)`
-  margin: 5px;
-  width: 100px;
-  height: 150px;
-  background-color: ${COLORS.primary};
-  border-radius: 10px;
-`;
-
-const Home = ({ navigation }) => {
-  const banners = [
-    {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-      title: "First Item",
-    },
-    {
-      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-      title: "Second Item",
-    },
-    {
-      id: "58694a0f-3da1-471f-bd96-145571e29d72",
-      title: "Third Item",
-    },
-  ];
+const Search = ({ navigation }) => {
+  const renderItem = ({ item }) => <ShowcaseProduct item={item} />;
   const products = [
     {
       id: 1,
@@ -275,148 +165,46 @@ const Home = ({ navigation }) => {
       off: null,
     },
   ];
-  const renderBanner = ({ item }) => <Banner source={banner} />;
-  const renderItem = ({ item }) => <ShowcaseProduct item={item} />;
-
-  const renderSpecialBanners = ({ item }) => (
-    <SpecialCategoryBanner></SpecialCategoryBanner>
-  );
-
   return (
     <Container>
       <TopBar>
-        <Pressable
-          onPress={() => {
-            navigation.navigate("Location");
-          }}
-        >
-          <Location>
-            <ArrowLocationIcon name="location-arrow" />
-            <CurrentLocation>
-              1st Floor, 101 RM Towers, Bapujin...
-            </CurrentLocation>
-            <DownArrowIcon name="ios-chevron-down" />
-          </Location>
+        <Pressable onPress={() => navigation.goBack()}>
+          <BackArrow name="arrow-back" />
         </Pressable>
-
-        <Notification>
-          <NotificationIcon name="notifications-outline" />
-          <NotificationCircle>
-            <NotificationText>3</NotificationText>
-          </NotificationCircle>
-        </Notification>
+        <ScreenTitle>Tach</ScreenTitle>
       </TopBar>
-      <StyledScrollView>
-        <WelcomeText>
-          Welcome <PrimaryText>Irfan</PrimaryText>
-        </WelcomeText>
-        <SearchArea onPress={() => navigation.navigate("Search")}>
-          <StyledInput>Let your search do the walking...</StyledInput>
-          <SearchIcon name="search-outline" />
-        </SearchArea>
-        <Banners
-          data={banners}
-          renderItem={renderBanner}
+      <Line />
+      <SearchArea>
+        <StyledInput
+          // onChangeText={(text) => setUserName(text)}
+          placeholder={"Let your search do the walking..."}
+          autoFocus={true}
+        />
+        <SearchIcon name="search-outline" />
+      </SearchArea>
+
+      <Loading>
+        <LoadingText>
+          Search is going <PrimaryText>Places</PrimaryText>
+        </LoadingText>
+        <LoadingIcon name="loading1" />
+      </Loading>
+      <Showcase>
+        <Wrapper>
+          <ShwocaseTitle>
+            Suggested For <PrimaryText>You</PrimaryText>
+          </ShwocaseTitle>
+          {/* <More>More {`${">"}`}</More> */}
+        </Wrapper>
+        <ShowcaseProducts
+          data={products}
+          renderItem={renderItem}
           keyExtractor={(item) => item.id}
           horizontal={true}
         />
-        <Showcase>
-          <Wrapper>
-            <ShwocaseTitle>
-              Looking for <PrimaryText>Breakfast?</PrimaryText>
-            </ShwocaseTitle>
-            <More>More {`${">"}`}</More>
-          </Wrapper>
-          <ShowcaseProducts
-            data={products}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            horizontal={true}
-          />
-        </Showcase>
-        <Showcase>
-          <Wrapper>
-            <ShwocaseTitle>
-              <PrimaryText>Trending</PrimaryText> Near You
-            </ShwocaseTitle>
-            <More>More {`${">"}`}</More>
-          </Wrapper>
-          <ShowcaseProducts
-            data={products}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            horizontal={true}
-          />
-        </Showcase>
-        <UpWave />
-        <CategoriesArea>
-          <CategoriesTitle>Our Ranges</CategoriesTitle>
-          <Categories>
-            <Category>
-              <CategoryImage source={chicken} />
-              <CategoryName>Fruits & Vegetables</CategoryName>
-            </Category>
-            <Category>
-              <CategoryImage source={chicken} />
-              <CategoryName>Fruits & Vegetables</CategoryName>
-            </Category>
-            <Category>
-              <CategoryImage source={chicken} />
-              <CategoryName>Fruits & Vegetables</CategoryName>
-            </Category>
-            <Category>
-              <CategoryImage source={chicken} />
-              <CategoryName>Fruits & Vegetables</CategoryName>
-            </Category>
-            <Category>
-              <CategoryImage source={chicken} />
-              <CategoryName>Fruits & Vegetables</CategoryName>
-            </Category>
-          </Categories>
-        </CategoriesArea>
-        <DownWave />
-        <Showcase>
-          <Wrapper>
-            <ShwocaseTitle>
-              <PrimaryText>Hand Picked</PrimaryText> For You
-            </ShwocaseTitle>
-            <More>More {`${">"}`}</More>
-          </Wrapper>
-          <ShowcaseProducts
-            data={products}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            horizontal={true}
-          />
-        </Showcase>
-        <Special>
-          <Title>
-            <PrimaryText>Special</PrimaryText> Ones to Explore
-          </Title>
-          <List
-            data={products}
-            renderItem={renderSpecialBanners}
-            keyExtractor={(item) => item.id}
-            horizontal={true}
-          />
-        </Special>
-        <Showcase>
-          <Wrapper>
-            <ShwocaseTitle>
-              <PrimaryText>Hand Picked</PrimaryText> For You
-            </ShwocaseTitle>
-            <More>More {`${">"}`}</More>
-          </Wrapper>
-          <ShowcaseProducts
-            data={products}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            horizontal={true}
-          />
-        </Showcase>
-      </StyledScrollView>
+      </Showcase>
     </Container>
   );
 };
 
-export default Home;
+export default Search;

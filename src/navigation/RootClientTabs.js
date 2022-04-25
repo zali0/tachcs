@@ -2,12 +2,13 @@ import { View, Text } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
-
-import Ionicons from "react-native-vector-icons/Ionicons";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Fontisto from "react-native-vector-icons/Fontisto";
 import Feather from "react-native-vector-icons/Feather";
 import { COLORS } from "../constants";
 import styled from "styled-components";
+import Bag from "../screens/Bag";
 const Tab = createBottomTabNavigator();
 
 const Container = styled(View)`
@@ -33,18 +34,20 @@ const RootClientTabs = () => {
             headerShown: false,
             tabBarLabel: "Home",
             tabBarIcon: ({ color, size }) => {
-              return <Ionicons color={color} name="home" size={size} />;
+              return <AntDesign color={color} name="home" size={size} />;
             },
           }}
         />
         <Tab.Screen
           name="Bag"
-          component={Home}
+          component={Bag}
           options={{
             headerShown: false,
             tabBarLabel: "Bag",
             tabBarIcon: ({ color, size }) => {
-              return <Fontisto color={color} name="shopping-bag" size={size} />;
+              return (
+                <SimpleLineIcons color={color} name="handbag" size={size} />
+              );
             },
           }}
         />
