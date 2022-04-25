@@ -17,13 +17,13 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
-      <Auth.Screen
+      {/* <Auth.Screen
         name="OTP"
         component={OTP}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
     </Auth.Navigator>
   );
 };
